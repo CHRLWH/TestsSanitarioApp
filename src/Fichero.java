@@ -5,9 +5,10 @@ import java.io.IOException;
 
 public class Fichero {
 
-        public void leerFichero(){
+        public String leerFichero(){
 
             String cadena="";
+            String textoCompleto="";
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
@@ -15,17 +16,15 @@ public class Fichero {
 
             try {
                 //Creo el objeto FileReader con la ruta relativa del txt a leer
-                fichero = new FileReader("data/personas.txt");
+                fichero = new FileReader("data/preguntas.txt");
                 lector = new BufferedReader(fichero);
 
 
                 do {
-
                     cadena = lector.readLine();
                     if (cadena != null){
-                        System.out.println(cadena);
+                        textoCompleto+=cadena;
                     }
-
                 }while (cadena != null);
 
             } catch (FileNotFoundException e) {
@@ -53,6 +52,7 @@ public class Fichero {
                     a.printStackTrace();
                 }
             }
+            return textoCompleto;
         }
 }
 
