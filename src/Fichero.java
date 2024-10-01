@@ -8,7 +8,7 @@ public class Fichero {
         public String leerFichero(){
 
             String cadena="";
-            String textoCompleto="";
+
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
@@ -23,7 +23,7 @@ public class Fichero {
                 do {
                     cadena = lector.readLine();
                     if (cadena != null){
-                        textoCompleto+=cadena;
+                       //Buscar almacenar cada palabra nueva no todo el texto
                     }
                 }while (cadena != null);
 
@@ -52,7 +52,7 @@ public class Fichero {
                     a.printStackTrace();
                 }
             }
-            return textoCompleto;
+
         }
 }
 

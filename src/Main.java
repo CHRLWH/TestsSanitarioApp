@@ -4,5 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Fichero fich = new Fichero();
         fich.leerFichero();
+
     }
 }
