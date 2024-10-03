@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Fichero {
 
@@ -8,10 +9,10 @@ public class Fichero {
 
     }
 
-    public String leerFichero(){
+    public ArrayList <String> leerFichero(){
 
             String cadena="";
-
+            ArrayList <Fichero> ficheroLeido = new ArrayList<Fichero>();
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
@@ -26,6 +27,10 @@ public class Fichero {
                 do {
                     cadena = lector.readLine();
                     if (cadena != null){
+                        for (int i = 0; i<cadena.length(); i++){
+
+
+                        }
                        //Buscar almacenar cada palabra nueva no todo el texto
                     }
                 }while (cadena != null);
@@ -50,7 +55,7 @@ public class Fichero {
                     if (fichero != null) {
                         fichero.close();
                     }
-                    //Si hay alguna excepcion printeo la traza para descubrir cual
+                    //Si hay alguna excepcion printeo la traza para descubrir que excepcion es
                 }catch (Exception a){
                     a.printStackTrace();
                 }
