@@ -13,7 +13,7 @@ public class Pregunta extends Fichero{
         this.opcion = opcion;
     }
 
-    private Pregunta crearPregunta(){
+   /* private Pregunta crearPregunta(){
         String ficheroString = "";
         String formatoRegex = "[;]";
         Fichero fichero = new Fichero();
@@ -23,6 +23,6 @@ public class Pregunta extends Fichero{
 
 
 
-    }
+    }*/
 }
 

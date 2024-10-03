@@ -1,11 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Fichero {
 
-        public String leerFichero(){
+    private File fichero;
+
+    public Fichero() {
+
+    }
+
+    public String leerFichero(){
 
             String cadena="";
 
@@ -52,7 +55,33 @@ public class Fichero {
                     a.printStackTrace();
                 }
             }
+            return null;
+        }
+
+    public void escribirFichero(String textoAEscribir){
+        FileWriter ficheroAescribir = null;
+
+        try{
+            ficheroAescribir = new FileWriter("data/ficheroPrueba.txt");
+
+            ficheroAescribir.write(textoAEscribir);
+            ficheroAescribir.write(97); //Escribe el caracter 97 de la tabla ascii
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+
+            try{
+                if (ficheroAescribir != null){
+                    ficheroAescribir.close();
+                }else{
+                    System.out.println("No se ha encontrado ningun fichero");
+                }
+            }catch (Exception a){
+                a.printStackTrace();
+            }
+        }
 
         }
+
 }
 
