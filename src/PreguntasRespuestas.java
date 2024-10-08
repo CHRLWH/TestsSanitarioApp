@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class PreguntasRespuestas {
+public class PreguntasRespuestas{
 
     ArrayList <Pregunta> preguntas = new ArrayList <Pregunta>();
 
-    ArrayList <Fichero> respuestas = new ArrayList<Fichero>();
-    public PreguntasRespuestas() {
+    ArrayList <Pregunta> respuestas = new ArrayList<Pregunta>();
 
+    public PreguntasRespuestas() {
+        this.respuestas =  new ArrayList <Pregunta>();
+        this.preguntas = new ArrayList<Pregunta>();
     }
 }
