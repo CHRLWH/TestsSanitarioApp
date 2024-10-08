@@ -8,6 +8,6 @@ public class Main {
         Fichero fich = new Fichero();
         fich.leerFichero();
         fich.escribirFichero("Holaaaaa");
-
+        Pregunta pr1 = new Pregunta();
     }
 }

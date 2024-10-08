@@ -2,26 +2,20 @@ public class Pregunta extends Fichero{
 
 
     private String modulo;
-    private int tema;
-    private String preguntas;
+    private String tema;
+    private String pregunta;
     //Array de opciones
     private String [] opciones;
     //Posicion donde está la respuesta correcta
-    private int respuesta;
-    public Pregunta(String modulo, int tema, String preguntas, int respuesta,String opciones) {
-        this.modulo = modulo;
-        this.tema = tema;
-        this.preguntas = preguntas;
-        this.respuesta = respuesta;
-        this.opciones = new String[]{opciones};
+    private String respuesta;
+    public Pregunta() {
+        this.modulo = leerFichero().get(0);
+        this.tema = leerFichero().get(1);
+        this.pregunta = leerFichero().get(2);
+        this.respuesta = leerFichero().get(3);
+        this.opciones = new String[]{leerFichero().get(4),leerFichero().get(5),leerFichero().get(6),leerFichero().get(7)};
 
     }
-/*
-    private Pregunta generarPregunta(){
-        ; //CONSTRUIR PERSONA A PARTIR DEL FICHERO
-
-        return Pregunta;
-    }*/
 
     public String getModulo() {
         return modulo;
@@ -31,29 +25,7 @@ public class Pregunta extends Fichero{
         this.modulo = modulo;
     }
 
-    public int getRespuesta() {
-        return respuesta;
-    }
 
-    public void setRespuesta(int respuesta) {
-        this.respuesta = respuesta;
-    }
-
-    public String getPreguntas() {
-        return preguntas;
-    }
-
-    public void setPreguntas(String preguntas) {
-        this.preguntas = preguntas;
-    }
-
-    public int getTema() {
-        return tema;
-    }
-
-    public void setTema(int tema) {
-        this.tema = tema;
-    }
 
     public String[] getOpciones() {
         return opciones;
