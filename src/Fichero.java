@@ -12,7 +12,8 @@ public class Fichero {
     public ArrayList <String> leerFichero(){
 
             String cadena="";
-            ArrayList <Fichero> ficheroLeido = new ArrayList<Fichero>();
+            int longitudDeLaCadena = 0;
+            ArrayList <String> ficheroLeido = new ArrayList<String>();
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
@@ -27,8 +28,13 @@ public class Fichero {
                 do {
                     cadena = lector.readLine();
                     if (cadena != null){
+                        longitudDeLaCadena = cadena.length();
                         for (int i = 0; i<cadena.length(); i++){
+                            if (cadena.charAt(i) != ' '){
 
+                                ficheroLeido.add(cadena.substring(i));
+                                i+=longitudDeLaCadena;
+                            }
 
                         }
                        //Buscar almacenar cada palabra nueva no todo el texto
@@ -60,7 +66,7 @@ public class Fichero {
                     a.printStackTrace();
                 }
             }
-            return null;
+            return ficheroLeido;
         }
 
     public void escribirFichero(String textoAEscribir){
