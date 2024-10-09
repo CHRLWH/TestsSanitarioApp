@@ -17,10 +17,12 @@ public class PreguntasRespuestas extends Pregunta{
     }
 
     public Pregunta getPregunta(){
-        return new Pregunta(getModulo(),getTema(),getPreguntaString(),getOpciones());
+        Pregunta preguntaAuxiliar = new Pregunta(getModulo(),getTema(),getPreguntaString(),getOpciones());
+        return preguntaAuxiliar;
     }
     public Pregunta getRespuesta(){
-        return new Pregunta(getRespuestaString());
+        Pregunta respuestaAuxiliar = new Pregunta(getRespuestaString());
+        return respuestaAuxiliar;
     }
 
 
