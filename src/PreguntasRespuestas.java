@@ -25,5 +25,11 @@ public class PreguntasRespuestas extends Pregunta{
         return respuestaAuxiliar;
     }
 
+    public ArrayList<Pregunta> getPreguntas() {
+        return preguntas;
+    }
 
+    public ArrayList<Pregunta> getRespuestas() {
+        return respuestas;
+    }
 }

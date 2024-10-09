@@ -12,5 +12,8 @@ public class Main {
 
         PreguntasRespuestas preguntas = new PreguntasRespuestas();
 
+        MetodosPrograma ejecutarPrograma = new MetodosPrograma();
+
+        ejecutarPrograma.ejecutarPrograma();
     }
 }
