@@ -17,7 +17,7 @@ public class Pregunta extends Fichero{
 
     }
     //Construir pregunta sin respuesta
-    public Pregunta(String modulo,String tema, String [] opciones ) {
+    public Pregunta(String modulo,String tema, String pregunta, String [] opciones ) {
         this.modulo = leerFichero().get(0);
         this.tema = leerFichero().get(1);
         this.pregunta = leerFichero().get(2);
@@ -46,7 +46,7 @@ public class Pregunta extends Fichero{
         this.modulo = modulo;
     }
 
-    public String getPregunta() {
+    public String getPreguntaString() {
         return pregunta;
     }
 
@@ -62,7 +62,7 @@ public class Pregunta extends Fichero{
         this.opciones = opciones;
     }
 
-    public String getRespuesta() {
+    public String getRespuestaString() {
         return respuesta;
     }
 

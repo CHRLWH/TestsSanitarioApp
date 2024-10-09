@@ -9,5 +9,8 @@ public class Main {
         fich.leerFichero();
         fich.escribirFichero("Holaaaaa");
         Pregunta pr1 = new Pregunta();
+
+        PreguntasRespuestas preguntas = new PreguntasRespuestas();
+
     }
 }
