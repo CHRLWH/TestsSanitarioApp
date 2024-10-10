@@ -12,6 +12,7 @@ public class Fichero {
     public ArrayList <String> leerFichero(){
 
             String cadena="";
+            String disparador = "MODULO";
             int longitudDeLaCadena = 0;
             ArrayList <String> ficheroLeido = new ArrayList<String>();
             // Creo un objeto llamado lector de la clase FileReader vacío
@@ -24,20 +25,26 @@ public class Fichero {
                 fichero = new FileReader("data/preguntas.txt");
                 lector = new BufferedReader(fichero);
 
+                //Hacer que cuando la cadena sea MODULO se haga un objeto nuevo
 
                 do {
                     cadena = lector.readLine();
+
                     if (cadena != null){
-                        longitudDeLaCadena = cadena.length();
-                        for (int i = 0; i<cadena.length(); i++){
-                            if (cadena.charAt(i) != ' '){
+                            if (cadena.equalsIgnoreCase(disparador)) {
+                                longitudDeLaCadena = cadena.length();
 
-                                ficheroLeido.add(cadena.substring(i));
-                                i+=longitudDeLaCadena;
+                                for (int i = 0; i < cadena.length(); i++) {
+
+                                    if (cadena.charAt(i) != ' ') {
+                                        ficheroLeido.add(cadena.substring(i));
+                                        i += longitudDeLaCadena;
+                                    }
+
+                                }
+                            }else{
+                                cadena = null;
                             }
-
-                        }
-                       //Buscar almacenar cada palabra nueva no todo el texto
                     }
                 }while (cadena != null);
 

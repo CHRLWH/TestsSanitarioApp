@@ -11,9 +11,6 @@ public class PreguntasRespuestas extends Pregunta{
         this.respuestas =  new ArrayList <Pregunta>();
         this.preguntas = new ArrayList<Pregunta>();
 
-        respuestas.add(getPregunta());
-        preguntas.add(getRespuesta());
-
     }
 
     public Pregunta getPregunta(){
@@ -25,11 +22,13 @@ public class PreguntasRespuestas extends Pregunta{
         return respuestaAuxiliar;
     }
 
-    public ArrayList<Pregunta> getPreguntas() {
+    public ArrayList<Pregunta> getPreguntasN() {
+        respuestas.add(getPregunta());
         return preguntas;
     }
 
     public ArrayList<Pregunta> getRespuestas() {
+        preguntas.add(getRespuesta());
         return respuestas;
     }
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Pregunta extends Fichero{
 
 
@@ -8,6 +10,7 @@ public class Pregunta extends Fichero{
     private String [] opciones;
     //Posicion donde está la respuesta correcta
     private String respuesta;
+
     public Pregunta() {
         this.modulo = leerFichero().get(0);
         this.tema = leerFichero().get(1);
@@ -17,7 +20,7 @@ public class Pregunta extends Fichero{
 
     }
     //Construir pregunta sin respuesta
-    public Pregunta(String modulo,String tema, String pregunta, String [] opciones ) {
+    public Pregunta(String modulo,String tema, String pregunta, String [] opciones) {
         this.modulo = leerFichero().get(0);
         this.tema = leerFichero().get(1);
         this.pregunta = leerFichero().get(2);
@@ -30,6 +33,23 @@ public class Pregunta extends Fichero{
         this.respuesta = leerFichero().get(3);
     }
 
+    //Construir pregunta personalizada
+    public Pregunta(String modulo, String pregunta, String tema, String[] opciones, String respuesta) {
+        this.modulo = modulo;
+        this.pregunta = pregunta;
+        this.tema = tema;
+        this.opciones = opciones;
+        this.respuesta = respuesta;
+    }
+
+    private Pregunta construirPregunta(){
+        for (String i:leerFichero()){
+            if (i.equalsIgnoreCase("MODULO")){
+
+
+            }
+        }
+    }
     public String getTema() {
         return tema;
     }

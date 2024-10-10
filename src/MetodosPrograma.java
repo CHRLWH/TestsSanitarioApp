@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class MetodosPrograma extends PreguntasRespuestas {
 
@@ -13,6 +13,7 @@ public class MetodosPrograma extends PreguntasRespuestas {
 
         switch (menu){
             case 1:
+                preguntaPorTemas();
                 break;
             case 2:
                 preguntaAleatoria();
@@ -22,14 +23,11 @@ public class MetodosPrograma extends PreguntasRespuestas {
     }
 
     public Pregunta preguntaAleatoria(){
-        int numeroAleatorio = (int) (Math.random() * (getPreguntas().size()));
-
-        int posicionDeLaPreguntaQueQuiero = getPreguntas().indexOf(numeroAleatorio);
-
-        return getPreguntas().get(posicionDeLaPreguntaQueQuiero);
-
-
+        Collections.shuffle(getPreguntasN());
+        return getPreguntasN().getFirst();
     }
 
+    public Pregunta preguntaPorTemas(){
 
+    }
 }
