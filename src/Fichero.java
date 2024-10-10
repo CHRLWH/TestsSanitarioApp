@@ -18,6 +18,12 @@ public class Fichero {
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
+            String modulo ="";
+            String tema ="";
+            String pregunta="";
+            String [] opciones;
+        //Posicion donde está la respuesta correcta
+        
 
 
             try {
@@ -31,13 +37,18 @@ public class Fichero {
                     cadena = lector.readLine();
 
                     if (cadena != null){
-                            if (cadena.equalsIgnoreCase(disparador)) {
                                 longitudDeLaCadena = cadena.length();
 
                                 for (int i = 0; i < cadena.length(); i++) {
 
                                     if (cadena.charAt(i) != ' ') {
-                                        ficheroLeido.add(cadena.substring(i));
+                                        if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("MODULO")){
+                                            modulo = String.valueOf(cadena.charAt(i));
+                                        } else if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("TEMA")) {
+                                            tema = String.valueOf(cadena.charAt(i));
+                                        } else if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("")) {
+                                            
+                                        }
                                         i += longitudDeLaCadena;
                                     }
 
@@ -45,7 +56,6 @@ public class Fichero {
                             }else{
                                 cadena = null;
                             }
-                    }
                 }while (cadena != null);
 
             } catch (FileNotFoundException e) {

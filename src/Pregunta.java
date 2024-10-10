@@ -42,14 +42,16 @@ public class Pregunta extends Fichero{
         this.respuesta = respuesta;
     }
 
-    private Pregunta construirPregunta(){
+    private Pregunta construirPreguntaConFichero(){
         for (String i:leerFichero()){
             if (i.equalsIgnoreCase("MODULO")){
+
 
 
             }
         }
     }
+
     public String getTema() {
         return tema;
     }
