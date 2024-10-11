@@ -24,6 +24,11 @@ public class PreguntasRespuestas extends Procesar {
                 System.out.println(e.getTema());
                 System.out.println(Arrays.toString(e.getOpciones()));
                 System.out.println(e.getRespuestaString());
+                System.out.println(" ");
             }
+    }
+
+    public ArrayList<Pregunta> getPreguntas() {
+        return preguntas;
     }
 }

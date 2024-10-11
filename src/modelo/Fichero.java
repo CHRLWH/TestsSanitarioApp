@@ -15,7 +15,6 @@ public class Fichero {
 
             String cadena="";
             int longitudDeLaCadena = 0;
-            ArrayList<String> array = new ArrayList<String>();
             ArrayList <String> ficheroLeido = new ArrayList<String>();
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;

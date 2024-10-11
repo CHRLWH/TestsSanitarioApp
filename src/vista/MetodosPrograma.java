@@ -31,15 +31,17 @@ public class MetodosPrograma extends PreguntasRespuestas {
 
     }
 
-   /* public void preguntaAleatoria(){
-        Collections.shuffle(getPreguntasN());
-        System.out.println("Pregunta: "+getPreguntasN().getFirst().getPreguntaString());
-        System.out.println("Opciones: " + Arrays.toString(getPreguntasN().getFirst().getOpciones()));
-        System.out.println("Introduce tu respuesta (El numero)");
-        int respuesta = new Scanner(System.in).nextInt();
+   public void preguntaAleatoria(){
+        PreguntasRespuestas listaPreguntas = new PreguntasRespuestas();
+
+       Collections.shuffle(listaPreguntas.getPreguntas());
+       System.out.println(listaPreguntas.getPreguntas().getFirst().getModulo());
+       System.out.println(listaPreguntas.getPreguntas().getFirst().getTema());
+       System.out.println(listaPreguntas.getPreguntas().getFirst().getPreguntaString());
+       System.out.println(Arrays.toString(listaPreguntas.getPreguntas().getFirst().getOpciones()));
 
 
-    }*/
+    }
 
     /*public Pregunta preguntaPorTemas(){
 
