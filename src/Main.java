@@ -12,7 +12,8 @@ import java.util.ArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        MetodosPrograma iniciar = new MetodosPrograma();
-        iniciar.preguntaAleatoria();
+
+        Procesar procesar = new Procesar();
+        procesar.procesar();
     }
 }
