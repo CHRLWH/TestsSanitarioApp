@@ -15,19 +15,6 @@ public class Pregunta extends Fichero {
 
 
     }
-    //Construir pregunta sin respuesta
-    public Pregunta(String modulo,String tema, String pregunta, String [] opciones) {
-        this.modulo = leerFichero().get(0);
-        this.tema = leerFichero().get(1);
-        this.pregunta = leerFichero().get(2);
-        this.opciones = new String[]{leerFichero().get(4),leerFichero().get(5),leerFichero().get(6),leerFichero().get(7)};
-
-    }
-
-    //Contruir respuesta
-    public Pregunta(String respuesta){
-        this.respuesta = leerFichero().get(3);
-    }
 
     //Construir pregunta personalizada
     public Pregunta(String modulo, String pregunta, String tema, String[] opciones, String respuesta) {
@@ -38,16 +25,6 @@ public class Pregunta extends Fichero {
         this.respuesta = respuesta;
     }
 
-    /*private Pregunta construirPreguntaConFichero(){
-        for (int i = 0; i<leerFichero().size();i++){
-                setModulo(leerFichero().get(i));
-                i+=1;
-                setPregunta(leerFichero().get(i));
-                i+=1;
-                setTema(leerFichero().get(i));
-                i+=1;
-        }
-    }*/
 
     public String getTema() {
         return tema;

@@ -22,13 +22,13 @@ public class MetodosPrograma extends PreguntasRespuestas {
                 /*preguntaPorTemas();*/
                 break;
             case 2:
-                preguntaAleatoria();
+                /*preguntaAleatoria();*/
                 break;
         }
 
     }
 
-    public void preguntaAleatoria(){
+   /* public void preguntaAleatoria(){
         Collections.shuffle(getPreguntasN());
         System.out.println("Pregunta: "+getPreguntasN().getFirst().getPreguntaString());
         System.out.println("Opciones: " + Arrays.toString(getPreguntasN().getFirst().getOpciones()));
@@ -36,7 +36,7 @@ public class MetodosPrograma extends PreguntasRespuestas {
         int respuesta = new Scanner(System.in).nextInt();
 
 
-    }
+    }*/
 
     /*public Pregunta preguntaPorTemas(){
 

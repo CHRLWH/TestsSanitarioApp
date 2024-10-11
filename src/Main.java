@@ -2,6 +2,7 @@ import controlador.Procesar;
 import modelo.Pregunta;
 /*import modelo.PreguntasRespuestas;*/
 import modelo.Fichero;
+import modelo.PreguntasRespuestas;
 
 import java.util.ArrayList;
 /*import vista.MetodosPrograma;*/
@@ -14,7 +15,10 @@ public class Main {
         ArrayList <String> lista = new ArrayList<>();
         fich.leerFichero();
         Procesar procesar = new Procesar();
-        procesar.procesar(lista);
+        procesar.procesar();
 
+        PreguntasRespuestas pr1 = new PreguntasRespuestas();
+
+        pr1.getPreguntasProcesadas().toString();
     }
 }
