@@ -7,7 +7,7 @@ public class Pregunta extends Fichero {
     private String tema;
     private String pregunta;
     //Array de opciones
-    private String [] opciones;
+    private String [] opciones = new String[4];
     //Posicion donde está la respuesta correcta
     private String respuesta;
 
@@ -21,9 +21,10 @@ public class Pregunta extends Fichero {
         this.modulo = modulo;
         this.pregunta = pregunta;
         this.tema = tema;
-        this.opciones = new String[4];
+        this.opciones = opciones;
         this.respuesta = respuesta;
     }
+
 
 
     public String getTema() {

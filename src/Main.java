@@ -19,6 +19,6 @@ public class Main {
 
         PreguntasRespuestas pr1 = new PreguntasRespuestas();
 
-        pr1.getPreguntasProcesadas().toString();
+        pr1.mostrarListas();
     }
 }

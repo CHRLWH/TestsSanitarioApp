@@ -3,27 +3,27 @@ package modelo;
 import controlador.Procesar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PreguntasRespuestas extends Procesar {
 
-    ArrayList <Pregunta> preguntas = new ArrayList <Pregunta>();
+    ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
-    ArrayList <Pregunta> respuestas = new ArrayList<Pregunta>();
+    ArrayList<Pregunta> respuestas = new ArrayList<Pregunta>();
 
-    @Override
-    public String toString() {
-        return "PreguntasRespuestas{" +
-                "preguntas=" + preguntas +
-                ", respuestas=" + respuestas +
-                '}';
-    }
 
     public PreguntasRespuestas() {
-
-        this.respuestas =  new ArrayList <Pregunta>();
+        this.respuestas = preguntas;
         this.preguntas = getPreguntasProcesadas();
-
-
     }
 
+    public void mostrarListas() {
+            for (Pregunta e : getPreguntasProcesadas()) {
+                System.out.println(e.getModulo());
+                System.out.println(e.getPreguntaString());
+                System.out.println(e.getTema());
+                System.out.println(Arrays.toString(e.getOpciones()));
+                System.out.println(e.getRespuestaString());
+            }
+    }
 }

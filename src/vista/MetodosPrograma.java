@@ -24,6 +24,9 @@ public class MetodosPrograma extends PreguntasRespuestas {
             case 2:
                 /*preguntaAleatoria();*/
                 break;
+            case 3:
+                /*preguntaPorModulo();*/
+                break;
         }
 
     }
