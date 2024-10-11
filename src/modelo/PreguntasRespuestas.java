@@ -1,15 +1,17 @@
-import java.util.ArrayList;
-import java.util.Objects;
+package modelo;
 
-public class PreguntasRespuestas extends Pregunta{
+import java.util.ArrayList;
+
+public class PreguntasRespuestas extends Pregunta {
 
     ArrayList <Pregunta> preguntas = new ArrayList <Pregunta>();
 
     ArrayList <Pregunta> respuestas = new ArrayList<Pregunta>();
 
     public PreguntasRespuestas() {
+        super();
         this.respuestas =  new ArrayList <Pregunta>();
-        this.preguntas = new ArrayList<Pregunta>();
+        this.preguntas = ;
 
     }
 

@@ -1,3 +1,5 @@
+package modelo;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -12,55 +14,43 @@ public class Fichero {
     public ArrayList <String> leerFichero(){
 
             String cadena="";
-            String disparador = "MODULO";
             int longitudDeLaCadena = 0;
+            ArrayList<String> array = new ArrayList<String>();
             ArrayList <String> ficheroLeido = new ArrayList<String>();
             // Creo un objeto llamado lector de la clase FileReader vacío
             FileReader fichero = null;
             BufferedReader lector = null;
-            String modulo ="";
-            String tema ="";
-            String pregunta="";
-            String [] opciones;
+
         //Posicion donde está la respuesta correcta
-        
+
 
 
             try {
                 //Creo el objeto FileReader con la ruta relativa del txt a leer
                 fichero = new FileReader("data/preguntas.txt");
                 lector = new BufferedReader(fichero);
-
-                //Hacer que cuando la cadena sea MODULO se haga un objeto nuevo
-
                 do {
                     cadena = lector.readLine();
 
                     if (cadena != null){
-                                longitudDeLaCadena = cadena.length();
+                        longitudDeLaCadena = cadena.length();
 
-                                for (int i = 0; i < cadena.length(); i++) {
+                        for (int i = 0; i < cadena.length(); i++) {
 
-                                    if (cadena.charAt(i) != ' ') {
-                                        if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("MODULO")){
-                                            modulo = String.valueOf(cadena.charAt(i));
-                                        } else if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("TEMA")) {
-                                            tema = String.valueOf(cadena.charAt(i));
-                                        } else if (String.valueOf(cadena.charAt(i)).equalsIgnoreCase("")) {
-                                            
-                                        }
-                                        i += longitudDeLaCadena;
-                                    }
-
-                                }
-                            }else{
-                                cadena = null;
+                            if (cadena.charAt(i) != ' ') {
+                                ficheroLeido.add(cadena.substring(i));
+                                i += longitudDeLaCadena;
                             }
+
+                        }
+                    }
                 }while (cadena != null);
+
+
 
             } catch (FileNotFoundException e) {
                 //Excepcion de fichero no encontrado
-                System.out.println("[!]Fichero no encontrado");
+                System.out.println("[!]modelo.Fichero no encontrado");
             } catch (IOException a){
                 //Excepcion por fallo de lectura
                 System.out.println("[!]Error de lectura");

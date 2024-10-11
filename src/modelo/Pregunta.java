@@ -1,6 +1,6 @@
-import java.util.List;
+package modelo;
 
-public class Pregunta extends Fichero{
+public class Pregunta extends Fichero {
 
 
     private String modulo;
@@ -12,11 +12,7 @@ public class Pregunta extends Fichero{
     private String respuesta;
 
     public Pregunta() {
-        this.modulo = leerFichero().get(0);
-        this.tema = leerFichero().get(1);
-        this.pregunta = leerFichero().get(2);
-        this.respuesta = leerFichero().get(3);
-        this.opciones = new String[]{leerFichero().get(4),leerFichero().get(5),leerFichero().get(6),leerFichero().get(7)};
+
 
     }
     //Construir pregunta sin respuesta
@@ -38,19 +34,20 @@ public class Pregunta extends Fichero{
         this.modulo = modulo;
         this.pregunta = pregunta;
         this.tema = tema;
-        this.opciones = opciones;
+        this.opciones = new String[4];
         this.respuesta = respuesta;
     }
 
-    private Pregunta construirPreguntaConFichero(){
-        for (String i:leerFichero()){
-            if (i.equalsIgnoreCase("MODULO")){
-
-
-
-            }
+    /*private Pregunta construirPreguntaConFichero(){
+        for (int i = 0; i<leerFichero().size();i++){
+                setModulo(leerFichero().get(i));
+                i+=1;
+                setPregunta(leerFichero().get(i));
+                i+=1;
+                setTema(leerFichero().get(i));
+                i+=1;
         }
-    }
+    }*/
 
     public String getTema() {
         return tema;
