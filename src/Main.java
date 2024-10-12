@@ -13,7 +13,10 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        Procesar procesar = new Procesar();
-        procesar.procesar();
+        Procesar proc = new Procesar();
+        proc.procesar();
+
+        MetodosPrograma main = new MetodosPrograma();
+        main.preguntaAleatoria();
     }
 }

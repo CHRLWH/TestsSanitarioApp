@@ -21,26 +21,31 @@ public class Procesar extends Fichero {
         String opcion3Aux;
         String opcion4Aux;
         String respuesta;
-
+        int contadorDeVuelta = 0;
         ArrayList<String> lista = leerFichero();
         ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
         int saltador = 8;
         int longitudArrayList = lista.size();
-        //USO DEL CONTADOR MAL
-        for (int i = 0; i < lista.size(); i++) {
-            if (i)
-            i*= saltador;
-            moduloAux = String.valueOf(lista.get(i));
-             temaAux = String.valueOf(lista.get(i+1));
-             preguntaAux = String.valueOf(lista.get(i+2));
-             opcion1Aux = String.valueOf(lista.get(i+3));
-             opcion2Aux = String.valueOf(lista.get(i+4));
-             opcion3Aux = String.valueOf(lista.get(i+5));
-             opcion4Aux = String.valueOf(lista.get(i+6));
-             respuesta = String.valueOf(lista.get(i+7));
 
-            Pregunta praux = new Pregunta(moduloAux, temaAux, preguntaAux, new String[]{opcion1Aux, opcion2Aux, opcion3Aux, opcion4Aux}, respuesta);
-            preguntas.add(praux);
+        //La condicion del bucle asegura que no se exceda del tamaño del bucle sumando la posicion mas los elementos que se encuentran en la lista
+        //Sumo a la posicion la diferencia entre las preguntas (8 posiciones)
+        for (int posicionEnLaLista = 0; posicionEnLaLista +8<= lista.size(); posicionEnLaLista+=saltador) {
+
+                //Lanza error porque el contador llega al valor de la longitud todal de la lista
+                moduloAux = String.valueOf(lista.get(posicionEnLaLista));
+                temaAux = String.valueOf(lista.get(posicionEnLaLista + 1));
+                preguntaAux = String.valueOf(lista.get(posicionEnLaLista + 2));
+                opcion1Aux = String.valueOf(lista.get(posicionEnLaLista + 3));
+                opcion2Aux = String.valueOf(lista.get(posicionEnLaLista + 4));
+                opcion3Aux = String.valueOf(lista.get(posicionEnLaLista + 5));
+                opcion4Aux = String.valueOf(lista.get(posicionEnLaLista + 6));
+                respuesta = String.valueOf(lista.get(posicionEnLaLista + 7));
+
+                Pregunta praux = new Pregunta(moduloAux, temaAux, preguntaAux, new String[]{opcion1Aux, opcion2Aux, opcion3Aux, opcion4Aux}, respuesta);
+                preguntas.add(praux);
+                posicionEnLaLista = saltador * contadorDeVuelta;
+                contadorDeVuelta++;
+
         }
         return preguntas;
     }
