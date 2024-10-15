@@ -28,6 +28,8 @@ public class Procesar extends Fichero {
         ArrayList<String> lista = leerFichero();
         ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
+        Pregunta praux = new Pregunta();
+
 
         //La condicion del bucle asegura que no se exceda del tamaño del bucle sumando la posicion mas los elementos que se encuentran en la lista
         //Sumo a la posicion la diferencia entre las preguntas (8 posiciones)
@@ -43,7 +45,7 @@ public class Procesar extends Fichero {
                 opcion4Aux = String.valueOf(lista.get(posicionEnLaLista + 6));
                 respuesta = String.valueOf(lista.get(posicionEnLaLista + 7));
 
-                Pregunta praux = new Pregunta(moduloAux, temaAux, preguntaAux, new String[]{opcion1Aux, opcion2Aux, opcion3Aux, opcion4Aux}, respuesta);
+                praux = new Pregunta(moduloAux, temaAux, preguntaAux, new String[]{opcion1Aux, opcion2Aux, opcion3Aux, opcion4Aux}, respuesta);
                 preguntas.add(praux);
                 posicionEnLaLista = saltador * contadorDeVuelta;
                 contadorDeVuelta++;

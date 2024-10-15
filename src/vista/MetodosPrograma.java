@@ -69,6 +69,8 @@ public class MetodosPrograma extends PreguntasRespuestas {
     }
 
     public void preguntaPorTemas(){
+
+        //Hacer un hashSet que almacene las preguntas iguales que quiera el usuario
         Scanner teclado = new Scanner(System.in);
         Set <Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String seleccion = "";
