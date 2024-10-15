@@ -104,12 +104,6 @@ public class MetodosPrograma extends PreguntasRespuestas {
 
         teclado.close();
 
-
-
-
-
-
-
     }
 
 }
