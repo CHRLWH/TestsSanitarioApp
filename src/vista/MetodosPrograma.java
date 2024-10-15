@@ -14,18 +14,15 @@ public class MetodosPrograma extends PreguntasRespuestas {
         int menu = 0;
         System.out.println("Bienvenido al programa de test sanitarios!");
         System.out.println("De cuanto tiempo quieres el test?¿");
-        System.out.println("1.-Preguntas por tema\n2.-Preguntas aleatorias\n3.Preguntas por modulo");
+        System.out.println("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo");
 
         menu = teclado.nextInt();
 
         switch (menu){
             case 1:
-                preguntaPorTemas();
-                break;
-            case 2:
                 preguntaAleatoria();
                 break;
-            case 3:
+            case 2:
                 preguntaPorModulo();
                 break;
         }
@@ -90,8 +87,20 @@ public class MetodosPrograma extends PreguntasRespuestas {
                 preguntasIguales.add(i);
             }
         }
-        preguntasIguales.forEach(System.out::println);
 
+
+        for (Pregunta i : preguntasIguales){
+            System.out.println(i.getModulo());
+            System.out.println(i.getPreguntaString());
+            System.out.println(Arrays.toString(i.getOpciones()));
+            respuesta = new Scanner(System.in).nextLine();
+
+            if (respuesta.equals(i.getRespuestaString())){
+                System.out.println("Respuesta correcta!");
+            }else{
+                System.out.println("Has fallado :(");
+            }
+        }
 
         teclado.close();
 
