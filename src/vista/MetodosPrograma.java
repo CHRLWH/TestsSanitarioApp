@@ -26,7 +26,7 @@ public class MetodosPrograma extends PreguntasRespuestas {
                 preguntaAleatoria();
                 break;
             case 3:
-                /*preguntaPorModulo();*/
+                preguntaPorModulo();
                 break;
         }
 
@@ -68,24 +68,35 @@ public class MetodosPrograma extends PreguntasRespuestas {
 
     }
 
-    public void preguntaPorTemas(){
-
+    public void preguntaPorModulo(){
         //Hacer un hashSet que almacene las preguntas iguales que quiera el usuario
         Scanner teclado = new Scanner(System.in);
+
         Set <Pregunta> preguntasIguales = new HashSet<Pregunta>();
-        String seleccion = "";
-        System.out.println("Preguntas por tema");
+        String moduloAbuscar;
+        String temaAbuscar;
+        ArrayList <Pregunta> listaPreguntas = getPreguntas();
+
+        System.out.println("Preguntas por modulo");
         System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
-        seleccion = teclado.nextLine();
-        System.out.println("Has escogido "+seleccion+"!");
+        moduloAbuscar = teclado.nextLine();
+        System.out.println("Introduce el tema sobre el que quieres hacer el test:");
+        temaAbuscar = teclado.nextLine();
+        System.out.println("Has escogido "+moduloAbuscar+"!");
 
+        for (Pregunta i : listaPreguntas){
+            if(i.getModulo().equals(moduloAbuscar) && i.getTema().equals(temaAbuscar)){
+                preguntasIguales.add(i);
 
+            }
+        }
+        preguntasIguales.forEach(System.out::println);
 
-        mostrarPreguntas();
 
 
 
 
 
     }
+
 }
