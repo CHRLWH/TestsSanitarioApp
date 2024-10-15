@@ -79,7 +79,7 @@ public class Fichero {
         FileWriter ficheroAescribir = null;
 
         try{
-            ficheroAescribir = new FileWriter("data/ficheroPrueba.txt");
+            ficheroAescribir = new FileWriter("data/preguntas.txt");
 
             ficheroAescribir.write(textoAEscribir);
             ficheroAescribir.write(97); //Escribe el caracter 97 de la tabla ascii

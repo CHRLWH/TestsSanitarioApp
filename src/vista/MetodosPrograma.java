@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.Fichero;
 import modelo.Pregunta;
 import modelo.Preguntas;
 
@@ -147,7 +148,8 @@ public class MetodosPrograma extends Preguntas {
         getPreguntas().add(praux);
         System.out.println("Pregunta creada correctamente!");
         System.out.println(praux);
-
+        praux.toString();
+        escribirFichero(praux.toString());
 
 
     }
