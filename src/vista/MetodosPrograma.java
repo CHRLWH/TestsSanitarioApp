@@ -1,11 +1,11 @@
 package vista;
 
 import modelo.Pregunta;
-import modelo.PreguntasRespuestas;
+import modelo.Preguntas;
 
 import java.util.*;
 
-public class MetodosPrograma extends PreguntasRespuestas {
+public class MetodosPrograma extends Preguntas {
 
 
 
@@ -14,7 +14,7 @@ public class MetodosPrograma extends PreguntasRespuestas {
         int menu = 0;
         System.out.println("Bienvenido al programa de test sanitarios!");
         System.out.println("De cuanto tiempo quieres el test?¿");
-        System.out.println("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo");
+        System.out.println("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-Crear pregunta");
 
         menu = teclado.nextInt();
 
@@ -25,6 +25,10 @@ public class MetodosPrograma extends PreguntasRespuestas {
             case 2:
                 preguntaPorModulo();
                 break;
+            case 3:
+                crearPregunta();
+                break;
+
         }
 
     }
@@ -36,7 +40,7 @@ public class MetodosPrograma extends PreguntasRespuestas {
         String respuesta = "";
         System.out.println("Cuantas preguntas quieres responder?¿");
         numeroPreguntasAResponder = teclado.nextInt();
-        PreguntasRespuestas listaPreguntas = new PreguntasRespuestas();
+        Preguntas listaPreguntas = new Preguntas();
 
         do {
             System.out.println("PREGUNTA:\n");
@@ -112,4 +116,45 @@ public class MetodosPrograma extends PreguntasRespuestas {
 
     }
 
+    public void crearPregunta(){
+        Scanner teclado = new Scanner(System.in);
+        String moduloAux;
+        String temaAux;
+        String preguntaAux;
+        String opcion1Aux;
+        String opcion2Aux;
+        String opcion3Aux;
+        String opcion4Aux;
+        String respuesta;
+
+        Pregunta praux = new Pregunta();
+
+
+        System.out.println("Crear una pregunta");
+        System.out.println("Introduce el modulo para el que quieres crear ésta pregunta");
+        moduloAux = teclado.nextLine();
+        System.out.println("Introduce el tema para el que quieres crear ésta pregunta");
+        temaAux = teclado.nextLine();
+        System.out.println("Introduce la pregunta");
+        preguntaAux = teclado.nextLine();
+        System.out.println("Introduce las opciones");
+        System.out.println("[1]OPCION 1");
+        opcion1Aux = teclado.nextLine();
+        System.out.println("[2]OPCION 2");
+        opcion2Aux = teclado.nextLine();
+        System.out.println("[3]OPCION 3");
+        opcion3Aux = teclado.nextLine();
+        System.out.println("[4]OPCION 4");
+        opcion4Aux = teclado.nextLine();
+        System.out.println("Introduce la respuesta correcta");
+        respuesta  = teclado.nextLine();
+
+        praux = new Pregunta(moduloAux, temaAux, preguntaAux, new String[]{opcion1Aux, opcion2Aux, opcion3Aux, opcion4Aux}, respuesta);
+        getPreguntas().add(praux);
+        System.out.println("Pregunta creada correctamente!");
+        System.out.println(praux);
+
+
+
+    }
 }

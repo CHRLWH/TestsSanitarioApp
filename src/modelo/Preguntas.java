@@ -5,16 +5,12 @@ import controlador.Procesar;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PreguntasRespuestas extends Procesar {
+public class Preguntas extends Procesar {
 
     ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
-    ArrayList<Pregunta> respuestas = new ArrayList<Pregunta>();
 
-
-
-    public PreguntasRespuestas() {
-        this.respuestas = preguntas;
+    public Preguntas() {
         this.preguntas = getPreguntasProcesadas();
     }
 

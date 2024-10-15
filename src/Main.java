@@ -1,11 +1,6 @@
 import controlador.Procesar;
-import modelo.Pregunta;
 /*import modelo.PreguntasRespuestas;*/
-import modelo.Fichero;
-import modelo.PreguntasRespuestas;
 import vista.MetodosPrograma;
-
-import java.util.ArrayList;
 /*import vista.MetodosPrograma;*/
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
