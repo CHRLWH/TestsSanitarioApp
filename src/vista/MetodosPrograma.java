@@ -63,7 +63,6 @@ public class MetodosPrograma extends PreguntasRespuestas {
         }while (numeroPreguntasAResponder > 0);
        System.out.println("Has acertado "+ numeroRespuestasCorrectas +"Preguntas");
        teclado.close();
-       System.out.println(Arrays.toString(listaPreguntas.getPreguntas().getFirst().getOpciones()));
 
 
     }
@@ -71,6 +70,8 @@ public class MetodosPrograma extends PreguntasRespuestas {
     public void preguntaPorModulo(){
         //Hacer un hashSet que almacene las preguntas iguales que quiera el usuario
         Scanner teclado = new Scanner(System.in);
+
+        String respuesta ;
 
         Set <Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String moduloAbuscar;
@@ -87,10 +88,13 @@ public class MetodosPrograma extends PreguntasRespuestas {
         for (Pregunta i : listaPreguntas){
             if(i.getModulo().equals(moduloAbuscar) && i.getTema().equals(temaAbuscar)){
                 preguntasIguales.add(i);
-
             }
         }
         preguntasIguales.forEach(System.out::println);
+
+
+        teclado.close();
+
 
 
 
