@@ -12,6 +12,7 @@ public class PreguntasRespuestas extends Procesar {
     ArrayList<Pregunta> respuestas = new ArrayList<Pregunta>();
 
 
+
     public PreguntasRespuestas() {
         this.respuestas = preguntas;
         this.preguntas = getPreguntasProcesadas();
@@ -23,6 +24,7 @@ public class PreguntasRespuestas extends Procesar {
                 System.out.println(e.getPreguntaString());
                 System.out.println(e.getTema());
                 System.out.println(Arrays.toString(e.getOpciones()));
+
                 System.out.println(e.getRespuestaString());
                 System.out.println(" ");
             }
@@ -31,4 +33,12 @@ public class PreguntasRespuestas extends Procesar {
     public ArrayList<Pregunta> getPreguntas() {
         return preguntas;
     }
+
+    public void mostrarPreguntas(){
+
+        for (Pregunta i:getPreguntas()){
+            System.out.println(i.toString());
+        }
+    }
+
 }

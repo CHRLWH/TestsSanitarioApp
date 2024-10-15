@@ -17,6 +17,6 @@ public class Main {
         proc.procesar();
 
         MetodosPrograma main = new MetodosPrograma();
-        main.preguntaAleatoria();
+        main.ejecutarPrograma();
     }
 }

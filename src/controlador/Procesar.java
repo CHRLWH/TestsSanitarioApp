@@ -21,11 +21,13 @@ public class Procesar extends Fichero {
         String opcion3Aux;
         String opcion4Aux;
         String respuesta;
+
         int contadorDeVuelta = 0;
+        int saltador = 8;
+
         ArrayList<String> lista = leerFichero();
         ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
-        int saltador = 8;
-        int longitudArrayList = lista.size();
+
 
         //La condicion del bucle asegura que no se exceda del tamaño del bucle sumando la posicion mas los elementos que se encuentran en la lista
         //Sumo a la posicion la diferencia entre las preguntas (8 posiciones)
@@ -33,8 +35,8 @@ public class Procesar extends Fichero {
 
                 //Lanza error porque el contador llega al valor de la longitud todal de la lista
                 moduloAux = String.valueOf(lista.get(posicionEnLaLista));
-                temaAux = String.valueOf(lista.get(posicionEnLaLista + 1));
-                preguntaAux = String.valueOf(lista.get(posicionEnLaLista + 2));
+                preguntaAux = String.valueOf(lista.get(posicionEnLaLista + 1));
+                temaAux = String.valueOf(lista.get(posicionEnLaLista + 2));
                 opcion1Aux = String.valueOf(lista.get(posicionEnLaLista + 3));
                 opcion2Aux = String.valueOf(lista.get(posicionEnLaLista + 4));
                 opcion3Aux = String.valueOf(lista.get(posicionEnLaLista + 5));
@@ -53,5 +55,6 @@ public class Procesar extends Fichero {
     public ArrayList<Pregunta> getPreguntasProcesadas() {
         return preguntas;
     }
+
 }
 

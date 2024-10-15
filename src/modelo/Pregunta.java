@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Pregunta extends Fichero {
@@ -18,7 +19,7 @@ public class Pregunta extends Fichero {
 
     }
 
-    //Construir pregunta personalizada
+    //Construir pregunta
     public Pregunta(String modulo, String pregunta, String tema, String[] opciones, String respuesta) {
         this.modulo = modulo;
         this.pregunta = pregunta;
@@ -27,7 +28,19 @@ public class Pregunta extends Fichero {
         this.respuesta = respuesta;
     }
 
+    @Override
+    public String toString() {
+        return "Pregunta\n" +
+                "modulo='" + modulo +
+                "\ntema='" + tema +
+                "\npregunta='" + pregunta +
+                "\nopciones=" + Arrays.toString(opciones) +
+                "\nrespuesta='" + respuesta+"\n";
+    }
 
+    public Pregunta(String respuesta) {
+        this.respuesta = respuesta;
+    }
 
     public String getTema() {
         return tema;
