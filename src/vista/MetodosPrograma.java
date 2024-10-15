@@ -108,12 +108,6 @@ public class MetodosPrograma extends Preguntas {
 
         teclado.close();
 
-
-
-
-
-
-
     }
 
     public void crearPregunta(){
