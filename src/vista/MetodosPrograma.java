@@ -98,53 +98,55 @@ public class MetodosPrograma extends Preguntas {
         String respuesta;
         String moduloAbuscar;
 
-        ArrayList <String> falladas = new ArrayList<String>();
+        ArrayList<String> falladas = new ArrayList<String>();
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
 
-        System.out.println("Preguntas por modulo");
-        System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
-        moduloAbuscar = teclado.nextLine();
-        System.out.println("Has escogido " + moduloAbuscar + "!");
+        do {
 
-        for (Pregunta i : listaPreguntas) {
-            if (i.getModulo().equals(moduloAbuscar)) {
-                preguntasIguales.add(i);
-            }
-        }
+            System.out.println("Preguntas por modulo");
+            System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
+            moduloAbuscar = teclado.nextLine();
+            System.out.println("Has escogido " + moduloAbuscar + "!");
 
-
-        for (Pregunta i : preguntasIguales) {
-            System.out.println(i.getModulo());
-            System.out.println(i.getPreguntaString());
-            System.out.println(Arrays.toString(i.getOpciones()));
-            respuesta = new Scanner(System.in).nextLine();
-
-            if (respuesta.equals(i.getRespuestaString())) {
-                System.out.println("Respuesta correcta!");
-            } else if (respuesta.equals(" ")) {
-                numeroRespuestasEnBlanco++;
-
-            } else {
-                falladas.add(listaPreguntas.getFirst().getRespuestaString());
-                System.out.println("Respuesta fallada!\n");
-                numeroRespuestasFalladas++;
+            for (Pregunta i : listaPreguntas) {
+                if (i.getModulo().equals(moduloAbuscar)) {
+                    preguntasIguales.add(i);
+                }
             }
 
-            numeroPreguntasAResponder--;
-            System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
 
+            for (Pregunta i : preguntasIguales) {
+                System.out.println(i.getModulo());
+                System.out.println(i.getPreguntaString());
+                System.out.println(Arrays.toString(i.getOpciones()));
+                respuesta = new Scanner(System.in).nextLine();
+
+                if (respuesta.equals(i.getRespuestaString())) {
+                    System.out.println("Respuesta correcta!");
+                } else if (respuesta.equals(" ")) {
+                    numeroRespuestasEnBlanco++;
+
+                } else {
+                    falladas.add(listaPreguntas.getFirst().getRespuestaString());
+                    System.out.println("Respuesta fallada!\n");
+                    numeroRespuestasFalladas++;
+                }
+
+                numeroPreguntasAResponder--;
+                System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
+
+            }
         } while (numeroPreguntasAResponder > 0);
         System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
-        System.out.println("Has fallado estas preguntas "+numeroRespuestasFalladas);
+        System.out.println("Has fallado estas preguntas " + numeroRespuestasFalladas);
 
-        for (String i:falladas){
+        for (String i : falladas) {
             System.out.println(i);
         }
 
-        System.out.println("Has dejado en blanco "+numeroRespuestasEnBlanco+"preguntas");
+        System.out.println("Has dejado en blanco " + numeroRespuestasEnBlanco + "preguntas");
         teclado.close();
-
 
     }
 
