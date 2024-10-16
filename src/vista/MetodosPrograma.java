@@ -39,6 +39,8 @@ public class MetodosPrograma extends Preguntas {
         Scanner teclado = new Scanner(System.in);
         int numeroPreguntasAResponder = 0;
         int numeroRespuestasCorrectas = 0;
+        int numeroRespuestasFalladas = 0;
+        int numeroRespuestasEnBlanco = 0;
         String respuesta = "";
         ArrayList <String> falladas = new ArrayList<String>();
         Pregunta preguntaFallada = new Pregunta();
@@ -59,9 +61,13 @@ public class MetodosPrograma extends Preguntas {
             if (respuesta.matches(listaPreguntas.getPreguntas().getFirst().getRespuestaString())) {
                 System.out.println("Respuesta correcta!");
                 numeroRespuestasCorrectas++;
+            } else if (respuesta.equals(" ")) {
+                numeroRespuestasEnBlanco++;
+
             } else {
                 falladas.add(listaPreguntas.getPreguntas().getFirst().getPreguntaString());
                 System.out.println("Respuesta fallada!\n");
+                numeroRespuestasFalladas++;
             }
             numeroPreguntasAResponder--;
             System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
@@ -74,6 +80,7 @@ public class MetodosPrograma extends Preguntas {
             System.out.println(i);
         }
 
+        System.out.println("Has dejado en blanco "+numeroRespuestasEnBlanco+"preguntas");
         teclado.close();
 
 
