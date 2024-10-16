@@ -1,6 +1,5 @@
 package vista;
 
-import modelo.Fichero;
 import modelo.Pregunta;
 import modelo.Preguntas;
 
@@ -9,17 +8,16 @@ import java.util.*;
 public class MetodosPrograma extends Preguntas {
 
 
-
-    public void ejecutarPrograma(){
+    public void ejecutarPrograma() {
         Scanner teclado = new Scanner(System.in);
         int menu = 0;
         System.out.println("Bienvenido al programa de test sanitarios!");
         System.out.println("De cuanto tiempo quieres el test?¿");
-        System.out.println("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-Crear pregunta");
+        System.out.println("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta");
 
         menu = teclado.nextInt();
 
-        switch (menu){
+        switch (menu) {
             case 1:
                 preguntaAleatoria();
                 break;
@@ -27,6 +25,9 @@ public class MetodosPrograma extends Preguntas {
                 preguntaPorModulo();
                 break;
             case 3:
+                preguntaPorTemas();
+                break;
+            case 4:
                 crearPregunta();
                 break;
 
@@ -34,7 +35,7 @@ public class MetodosPrograma extends Preguntas {
 
     }
 
-   public void preguntaAleatoria(){
+    public void preguntaAleatoria() {
         Scanner teclado = new Scanner(System.in);
         int numeroPreguntasAResponder = 0;
         int numeroRespuestasCorrectas = 0;
@@ -56,58 +57,97 @@ public class MetodosPrograma extends Preguntas {
             if (respuesta.matches(listaPreguntas.getPreguntas().getFirst().getRespuestaString())) {
                 System.out.println("Respuesta correcta!");
                 numeroRespuestasCorrectas++;
-            }else{
+            } else {
                 System.out.println("Respuesta fallada!\n");
             }
             numeroPreguntasAResponder--;
-            System.out.println("Te quedan "+numeroPreguntasAResponder+" Preguntas");
+            System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
 
-        }while (numeroPreguntasAResponder > 0);
-       System.out.println("Has acertado "+ numeroRespuestasCorrectas +"Preguntas");
-       teclado.close();
+        } while (numeroPreguntasAResponder > 0);
+        System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
+        teclado.close();
 
 
     }
 
-    public void preguntaPorModulo(){
+    public void preguntaPorModulo() {
         //Hacer un hashSet que almacene las preguntas iguales que quiera el usuario
         Scanner teclado = new Scanner(System.in);
 
-        String respuesta ;
+        String respuesta;
 
-        Set <Pregunta> preguntasIguales = new HashSet<Pregunta>();
+        Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String moduloAbuscar;
-        String temaAbuscar;
-        ArrayList <Pregunta> listaPreguntas = getPreguntas();
+        ArrayList<Pregunta> listaPreguntas = getPreguntas();
 
         System.out.println("Preguntas por modulo");
         System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
         moduloAbuscar = teclado.nextLine();
-        System.out.println("Introduce el tema sobre el que quieres hacer el test:");
-        temaAbuscar = teclado.nextLine();
-        System.out.println("Has escogido "+moduloAbuscar+"!");
+        System.out.println("Has escogido " + moduloAbuscar + "!");
 
-        for (Pregunta i : listaPreguntas){
-            if(i.getModulo().equals(moduloAbuscar) && i.getTema().equals(temaAbuscar)){
+        for (Pregunta i : listaPreguntas) {
+            if (i.getModulo().equals(moduloAbuscar)) {
                 preguntasIguales.add(i);
             }
         }
 
 
-        for (Pregunta i : preguntasIguales){
+        for (Pregunta i : preguntasIguales) {
             System.out.println(i.getModulo());
             System.out.println(i.getPreguntaString());
             System.out.println(Arrays.toString(i.getOpciones()));
             respuesta = new Scanner(System.in).nextLine();
 
-            if (respuesta.equals(i.getRespuestaString())){
+            if (respuesta.equals(i.getRespuestaString())) {
                 System.out.println("Respuesta correcta!");
-            }else{
+            } else {
                 System.out.println("Has fallado :(");
             }
         }
 
         teclado.close();
+
+    }
+
+    public void preguntaPorTemas() {
+        Scanner teclado = new Scanner(System.in);
+
+        String respuesta;
+
+        Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
+        String temaAbuscar;
+        ArrayList<Pregunta> listaPreguntas = getPreguntas();
+
+        System.out.println("Preguntas por tema");
+        System.out.println("Introduce el tema sobre el que quieres hacer el test:");
+        temaAbuscar = teclado.nextLine();
+        System.out.println("Has escogido " + temaAbuscar + "!");
+
+        for (Pregunta i : listaPreguntas) {
+            if (i.getTema().equals(temaAbuscar)) {
+                preguntasIguales.add(i);
+            }
+        }
+
+
+        for (Pregunta i : preguntasIguales) {
+            System.out.println(i.getTema());
+            System.out.println(i.getPreguntaString());
+            System.out.println(Arrays.toString(i.getOpciones()));
+            respuesta = new Scanner(System.in).nextLine();
+
+            if (respuesta.equals(i.getRespuestaString())) {
+                System.out.println("Respuesta correcta!");
+            } else {
+                System.out.println("Has fallado :(");
+            }
+        }
+
+        teclado.close();
+
+    }
+
+    public void preguntaDeTodosLosTemas(){
 
     }
 
@@ -148,9 +188,7 @@ public class MetodosPrograma extends Preguntas {
         getPreguntas().add(praux);
         System.out.println("Pregunta creada correctamente!");
         System.out.println(praux);
-        praux.toString();
         escribirFichero(praux.toString());
-
 
     }
 }
