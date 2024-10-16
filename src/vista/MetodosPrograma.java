@@ -40,6 +40,8 @@ public class MetodosPrograma extends Preguntas {
         int numeroPreguntasAResponder = 0;
         int numeroRespuestasCorrectas = 0;
         String respuesta = "";
+        ArrayList <String> falladas = new ArrayList<String>();
+        Pregunta preguntaFallada = new Pregunta();
         System.out.println("Cuantas preguntas quieres responder?¿");
         numeroPreguntasAResponder = teclado.nextInt();
         Preguntas listaPreguntas = new Preguntas();
@@ -58,6 +60,7 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println("Respuesta correcta!");
                 numeroRespuestasCorrectas++;
             } else {
+                falladas.add(listaPreguntas.getPreguntas().getFirst().getPreguntaString());
                 System.out.println("Respuesta fallada!\n");
             }
             numeroPreguntasAResponder--;
@@ -65,6 +68,12 @@ public class MetodosPrograma extends Preguntas {
 
         } while (numeroPreguntasAResponder > 0);
         System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
+        System.out.println("Has fallado estas preguntas");
+
+        for (String i:falladas){
+            System.out.println(i);
+        }
+
         teclado.close();
 
 

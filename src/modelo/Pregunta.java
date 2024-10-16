@@ -1,7 +1,6 @@
 package modelo;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Pregunta extends Fichero {
 
