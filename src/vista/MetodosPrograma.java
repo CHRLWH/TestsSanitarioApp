@@ -42,8 +42,13 @@ public class MetodosPrograma extends Preguntas {
         int numeroRespuestasFalladas = 0;
         int numeroRespuestasEnBlanco = 0;
         String respuesta = "";
+        String marcarComoFavorita;
+
+        ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
         ArrayList <String> falladas = new ArrayList<String>();
-        Pregunta preguntaFallada = new Pregunta();
+        Pregunta preguntaFavorita = new Pregunta();
+
+        System.out.println("PREGUNTA ALEATORIA. Para marcar como favorita pulse f tras una pregunta");
         System.out.println("Cuantas preguntas quieres responder?¿");
         numeroPreguntasAResponder = teclado.nextInt();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
@@ -69,6 +74,19 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println("Respuesta fallada!\n");
                 numeroRespuestasFalladas++;
             }
+
+            marcarComoFavorita = teclado.nextLine();
+
+            if (marcarComoFavorita.equalsIgnoreCase("f")){
+                preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
+                        listaPreguntas.getFirst().getTema(),listaPreguntas.getFirst().getOpciones(),listaPreguntas.getFirst().getRespuestaString());
+                preguntasFavoritas.add(preguntaFavorita);
+            }
+
+            System.out.println("Respuestas acertadas " + numeroRespuestasCorrectas + "Preguntas");
+            System.out.println("Respuestas falladas: " + numeroRespuestasFalladas);
+            System.out.println("Respuestas en blanco:"+numeroRespuestasEnBlanco+"preguntas");
+
             numeroPreguntasAResponder--;
             System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
 
@@ -101,6 +119,7 @@ public class MetodosPrograma extends Preguntas {
         ArrayList<String> falladas = new ArrayList<String>();
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
+        ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
 
 
             System.out.println("Preguntas por modulo");
@@ -161,6 +180,7 @@ public class MetodosPrograma extends Preguntas {
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String temaAbuscar;
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
+        ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
 
         System.out.println("Preguntas por tema");
         System.out.println("Introduce el tema sobre el que quieres hacer el test:");

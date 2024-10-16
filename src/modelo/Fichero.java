@@ -20,7 +20,6 @@ public class Fichero {
             FileReader fichero = null;
             BufferedReader lector = null;
 
-        //Posicion donde está la respuesta correcta
 
 
 
