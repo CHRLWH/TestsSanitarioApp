@@ -30,6 +30,9 @@ public class MetodosPrograma extends Preguntas {
             case 4:
                 crearPregunta();
                 break;
+            case 5:
+                preguntasFavoritas();
+                break;
 
         }
 
@@ -115,14 +118,21 @@ public class MetodosPrograma extends Preguntas {
 
         String respuesta;
         String moduloAbuscar;
+        String marcarComoFavorita;
 
+        ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
         ArrayList<String> falladas = new ArrayList<String>();
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
-        ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
 
 
-            System.out.println("Preguntas por modulo");
+        Pregunta preguntaFavorita = new Pregunta();
+
+        do {
+            System.out.println("Preguntas por modulo. Para marcar como favorita pulse f tras una pregunta");
+            System.out.println("Cuantas preguntas quieres responder?¿");
+            numeroPreguntasAResponder = teclado.nextInt();
+
             System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
             moduloAbuscar = teclado.nextLine();
             System.out.println("Has escogido " + moduloAbuscar + "!");
@@ -136,6 +146,7 @@ public class MetodosPrograma extends Preguntas {
 
             for (Pregunta i : preguntasIguales) {
                 System.out.println(i.getModulo());
+                System.out.println(i.getTema());
                 System.out.println(i.getPreguntaString());
                 System.out.println(Arrays.toString(i.getOpciones()));
                 respuesta = new Scanner(System.in).nextLine();
@@ -152,8 +163,21 @@ public class MetodosPrograma extends Preguntas {
                 }
 
             }
+            marcarComoFavorita = new Scanner(System.in).nextLine();
 
+            if (marcarComoFavorita.equalsIgnoreCase("f")){
+                preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
+                        listaPreguntas.getFirst().getTema(),listaPreguntas.getFirst().getOpciones(),listaPreguntas.getFirst().getRespuestaString());
+                preguntasFavoritas.add(preguntaFavorita);
+            }
 
+            System.out.println("Respuestas acertadas " + numeroRespuestasCorrectas + "Preguntas");
+            System.out.println("Respuestas falladas: " + numeroRespuestasFalladas);
+            System.out.println("Respuestas en blanco:"+numeroRespuestasEnBlanco+"preguntas");
+
+            numeroPreguntasAResponder--;
+            System.out.println("Te quedan "+numeroPreguntasAResponder+" preguntas");
+        } while (numeroPreguntasAResponder > 0);
         System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
         System.out.println("Has fallado estas preguntas " + numeroRespuestasFalladas);
 
@@ -211,7 +235,7 @@ public class MetodosPrograma extends Preguntas {
 
     }
 
-    public void preguntaDeTodosLosTemas(){
+    public void preguntasFavoritas(){
 
 
     }
