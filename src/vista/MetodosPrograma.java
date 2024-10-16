@@ -102,7 +102,6 @@ public class MetodosPrograma extends Preguntas {
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
 
-        do {
 
             System.out.println("Preguntas por modulo");
             System.out.println("Introduce el módulo sobre el que quieres hacer el test:");
@@ -133,11 +132,9 @@ public class MetodosPrograma extends Preguntas {
                     numeroRespuestasFalladas++;
                 }
 
-                numeroPreguntasAResponder--;
-                System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
-
             }
-        } while (numeroPreguntasAResponder > 0);
+
+
         System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
         System.out.println("Has fallado estas preguntas " + numeroRespuestasFalladas);
 
@@ -152,6 +149,12 @@ public class MetodosPrograma extends Preguntas {
 
     public void preguntaPorTemas() {
         Scanner teclado = new Scanner(System.in);
+
+
+        int numeroPreguntasAResponder = 0;
+        int numeroRespuestasCorrectas = 0;
+        int numeroRespuestasFalladas = 0;
+        int numeroRespuestasEnBlanco = 0;
 
         String respuesta;
 
