@@ -193,6 +193,7 @@ public class MetodosPrograma extends Preguntas {
 
     public void preguntaDeTodosLosTemas(){
 
+
     }
 
     public void crearPregunta(){
