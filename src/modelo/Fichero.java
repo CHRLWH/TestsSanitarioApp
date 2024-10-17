@@ -21,8 +21,6 @@ public class Fichero {
             BufferedReader lector = null;
 
 
-
-
             try {
                 //Creo el objeto FileReader con la ruta relativa del txt a leer
                 fichero = new FileReader("data/preguntas.txt");

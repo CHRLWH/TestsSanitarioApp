@@ -375,7 +375,7 @@ public class MetodosPrograma extends Preguntas {
         getPreguntas().add(praux);
         System.out.println("Pregunta creada correctamente!");
         System.out.println(praux);
-        escribirFicheroExistente("data/preguntasNuevas.txt",praux.toString());
+        escribirFicheroExistente("data/preguntas.txt",praux.toString());
 
     }
 }
