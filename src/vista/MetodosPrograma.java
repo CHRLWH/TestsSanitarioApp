@@ -15,33 +15,46 @@ public class MetodosPrograma extends Preguntas {
         ;
         int menu = 0;
         int tiempo = 0;
-        System.out.println("Bienvenido al programa de test sanitarios!");
-        tiempo = Escanner.pedirNumeros("De cuanto tiempo quieres el test?¿");
-        menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta");
+        boolean explosionDePrograma = false;
 
         do {
 
 
-            switch (menu) {
-                case 1:
-                    preguntaAleatoria();
-                    break;
-                case 2:
-                    preguntaPorModulo();
-                    break;
-                case 3:
-                    preguntaPorTemas();
-                    break;
-                case 4:
-                    crearPregunta();
-                    break;
-                case 5:
-                    preguntasFavoritas();
-                    break;
+            try {
+                System.out.println("Bienvenido al programa de test sanitarios!");
+                tiempo = Escanner.pedirNumeros("De cuanto tiempo quieres el test?¿");
+                menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta");
 
+                do {
+
+                    switch (menu) {
+                        case 1:
+                            preguntaAleatoria();
+                            break;
+                        case 2:
+                            preguntaPorModulo();
+                            break;
+                        case 3:
+                            preguntaPorTemas();
+                            break;
+                        case 4:
+                            crearPregunta();
+                            break;
+                        case 5:
+                            preguntasFavoritas();
+                            break;
+
+                    }
+                    tiempo++;
+                } while (tiempo > 0);
+
+            } catch (InputMismatchException a) {
+                explosionDePrograma = true;
+                System.out.println("Caracter no permitido. Introduce numeros!");
             }
-            tiempo++;
-        }while (tiempo>0);
+
+        }while (explosionDePrograma);
+
     }
 
     public void preguntaAleatoria() {
