@@ -74,13 +74,14 @@ public class Fichero {
             return ficheroLeido;
         }
 
-    public void escribirFichero(String rutaDeFicheroAescribir, String textoAEscribir){
+    public void escribirFicheroNuevo(String rutaDeFicheroAescribir, String textoAEscribir){
+
         FileWriter ficheroAescribir = null;
 
         try{
-            ficheroAescribir = new FileWriter(rutaDeFicheroAescribir);
+                ficheroAescribir = new FileWriter(rutaDeFicheroAescribir);
+                ficheroAescribir.write(textoAEscribir);
 
-            ficheroAescribir.write(textoAEscribir);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -96,7 +97,31 @@ public class Fichero {
             }
         }
 
+    }
+
+    public void escribirFicheroExistente(String rutaDeFicheroAescribir, String textoAEscribir){
+
+        FileWriter ficheroAescribir = null;
+
+        try{
+            ficheroAescribir = new FileWriter(rutaDeFicheroAescribir,true);
+            ficheroAescribir.write(textoAEscribir);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+
+            try{
+                if (ficheroAescribir != null){
+                    ficheroAescribir.close();
+                }else{
+                    System.out.println("No se ha encontrado ningun fichero");
+                }
+            }catch (Exception a){
+                a.printStackTrace();
+            }
         }
 
+    }
 }
 
