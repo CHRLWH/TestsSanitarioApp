@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.Fichero;
 import modelo.Pregunta;
 import modelo.Preguntas;
 
@@ -70,6 +71,7 @@ public class MetodosPrograma extends Preguntas {
         String respuesta = "";
         String marcarComoFavorita;
 
+        String[] opciones = new String[]{};
         ArrayList<Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         ArrayList <String> falladas = new ArrayList<String>();
         Pregunta preguntaFavorita = new Pregunta();
@@ -80,6 +82,11 @@ public class MetodosPrograma extends Preguntas {
             numeroPreguntasAResponder = Escanner.pedirNumeros("Cuantas preguntas quieres responder?¿");
             ArrayList<Pregunta> listaPreguntas = getPreguntas();
 
+
+
+
+
+
             do {
                 System.out.println("PREGUNTA:\n");
                 //Randomiza la list entera
@@ -89,7 +96,13 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println(listaPreguntas.getFirst().getTema());
                 System.out.println(listaPreguntas.getFirst().getPreguntaString());
 
-                System.out.println(Arrays.toString(listaPreguntas.getFirst().getOpciones()));
+                //Convierto en List el Array opciones
+                List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
+                //Cambio el orden de las opciones en la lista
+                Collections.shuffle(opcionesList);
+                //Vuelvo a convertir la List en array
+                opcionesList.toArray(opciones);
+
                 respuesta = Escanner.pedirStringConMensaje("Introduce tu respuesta!");
 
                 if (respuesta.matches(listaPreguntas.getFirst().getRespuestaString())) {
@@ -109,8 +122,12 @@ public class MetodosPrograma extends Preguntas {
                 if (marcarComoFavorita.equalsIgnoreCase("f")) {
                     preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                             listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
+
+                    escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
+
                     preguntasFavoritas.add(preguntaFavorita);
                     System.out.println("Has marcado esta pregunta como favorita");
+
                 } else {
                     System.out.println("Pregunta NO añadida a favoritos!");
                 }
@@ -150,6 +167,7 @@ public class MetodosPrograma extends Preguntas {
         String moduloAbuscar;
         String marcarComoFavorita;
 
+        String[] opciones = new String[]{};
         ArrayList <Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         ArrayList<String> falladas = new ArrayList<String>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
@@ -162,6 +180,13 @@ public class MetodosPrograma extends Preguntas {
         Pregunta preguntaFavorita = new Pregunta();
 
         do {
+            //Convierto en List el Array opciones
+            List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
+            //Cambio el orden de las opciones en la lista
+            Collections.shuffle(opcionesList);
+            //Vuelvo a convertir la List en array
+            opcionesList.toArray(opciones);
+
             System.out.println("Preguntas por modulo. Para marcar como favorita pulse f tras una pregunta");
             numeroPreguntasAResponder = getPreguntas().size();
 
@@ -199,6 +224,7 @@ public class MetodosPrograma extends Preguntas {
             if (marcarComoFavorita.equalsIgnoreCase("f")){
                 preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                         listaPreguntas.getFirst().getTema(),listaPreguntas.getFirst().getOpciones(),listaPreguntas.getFirst().getRespuestaString());
+                escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
                 preguntasFavoritas.add(preguntaFavorita);
                 System.out.println("Has marcado esta pregunta como favorita");
             }else{
@@ -234,6 +260,8 @@ public class MetodosPrograma extends Preguntas {
 
 
         String respuesta;
+
+        String[] opciones = new String[]{};
         ArrayList <Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String temaAbuscar;
@@ -243,6 +271,12 @@ public class MetodosPrograma extends Preguntas {
 
 
 
+            //Convierto en List el Array opciones
+            List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
+            //Cambio el orden de las opciones en la lista
+            Collections.shuffle(opcionesList);
+            //Vuelvo a convertir la List en array
+            opcionesList.toArray(opciones);
 
             System.out.println("Preguntas por tema. Para marcar como favorita pulse f tras una pregunta");
             System.out.println("Introduce el tema sobre el que quieres hacer el test:");
@@ -279,6 +313,9 @@ public class MetodosPrograma extends Preguntas {
             if (marcarComoFavorita.equalsIgnoreCase("f")) {
                 preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                         listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
+
+                escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
+
                 preguntasFavoritas.add(preguntaFavorita);
                 System.out.println("Has marcado esta pregunta como favorita");
             } else {
@@ -344,7 +381,7 @@ public class MetodosPrograma extends Preguntas {
         getPreguntas().add(praux);
         System.out.println("Pregunta creada correctamente!");
         System.out.println(praux);
-        escribirFichero(praux.toString());
+        escribirFichero("data/preguntasNuevas.txt",praux.toString());
 
     }
 }

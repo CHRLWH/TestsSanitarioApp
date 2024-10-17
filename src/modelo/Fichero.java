@@ -74,11 +74,11 @@ public class Fichero {
             return ficheroLeido;
         }
 
-    public void escribirFichero(String textoAEscribir){
+    public void escribirFichero(String rutaDeFicheroAescribir, String textoAEscribir){
         FileWriter ficheroAescribir = null;
 
         try{
-            ficheroAescribir = new FileWriter("data/preguntas.txt");
+            ficheroAescribir = new FileWriter(rutaDeFicheroAescribir);
 
             ficheroAescribir.write(textoAEscribir);
         }catch (Exception e){
