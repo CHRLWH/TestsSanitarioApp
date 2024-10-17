@@ -230,8 +230,13 @@ public class MetodosPrograma extends Preguntas {
 
             if (respuesta.equals(i.getRespuestaString())) {
                 System.out.println("Respuesta correcta!");
-            } else {
+                numeroRespuestasCorrectas++;
+            } else if (respuesta.isEmpty()) {
+                System.out.println("Respuesta marcada como en blanco :!");
+                numeroRespuestasEnBlanco++;
+            }else {
                 System.out.println("Has fallado :(");
+                numeroRespuestasFalladas++;
             }
         }
         marcarComoFavorita = new Scanner(System.in).nextLine();
@@ -242,6 +247,9 @@ public class MetodosPrograma extends Preguntas {
             preguntasFavoritas.add(preguntaFavorita);
             System.out.println("Has marcado esta pregunta como favorita");
         }
+        System.out.println("Has Acertado = "+numeroRespuestasCorrectas+ " Preguntas");
+        System.out.println("Has fallado = "+numeroRespuestasFalladas+ " Preguntas");
+        System.out.println("Has dejado en blanco = "+numeroRespuestasEnBlanco+ " Preguntas");
         teclado.close();
 
     }
