@@ -1,6 +1,5 @@
 package vista;
 
-import modelo.Fichero;
 import modelo.Pregunta;
 import modelo.Preguntas;
 
@@ -82,11 +81,6 @@ public class MetodosPrograma extends Preguntas {
             numeroPreguntasAResponder = Escanner.pedirNumeros("Cuantas preguntas quieres responder?¿");
             ArrayList<Pregunta> listaPreguntas = getPreguntas();
 
-
-
-
-
-
             do {
                 System.out.println("PREGUNTA:\n");
                 //Randomiza la list entera
@@ -123,7 +117,7 @@ public class MetodosPrograma extends Preguntas {
                     preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                             listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
 
-                    escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
+                    escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
 
                     preguntasFavoritas.add(preguntaFavorita);
                     System.out.println("Has marcado esta pregunta como favorita");
@@ -224,7 +218,7 @@ public class MetodosPrograma extends Preguntas {
             if (marcarComoFavorita.equalsIgnoreCase("f")){
                 preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                         listaPreguntas.getFirst().getTema(),listaPreguntas.getFirst().getOpciones(),listaPreguntas.getFirst().getRespuestaString());
-                escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
+                escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
                 preguntasFavoritas.add(preguntaFavorita);
                 System.out.println("Has marcado esta pregunta como favorita");
             }else{
@@ -314,7 +308,7 @@ public class MetodosPrograma extends Preguntas {
                 preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
                         listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
 
-                escribirFichero("data/preguntasFavoritas.txt",preguntaFavorita.toString());
+                escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
 
                 preguntasFavoritas.add(preguntaFavorita);
                 System.out.println("Has marcado esta pregunta como favorita");
@@ -381,7 +375,7 @@ public class MetodosPrograma extends Preguntas {
         getPreguntas().add(praux);
         System.out.println("Pregunta creada correctamente!");
         System.out.println(praux);
-        escribirFichero("data/preguntasNuevas.txt",praux.toString());
+        escribirFicheroExistente("data/preguntasNuevas.txt",praux.toString());
 
     }
 }
