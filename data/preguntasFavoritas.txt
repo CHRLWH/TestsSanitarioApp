@@ -1,0 +1,6 @@
+Pregunta
+modulo='MODULO1
+tema='TEMA1
+pregunta='PREGUNTA1
+opciones=[""	2, ""  1, ""	3, ""	4]
+respuesta='RESPUESTA1

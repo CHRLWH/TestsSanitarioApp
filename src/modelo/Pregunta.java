@@ -1,6 +1,8 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Pregunta extends Fichero {
 
@@ -29,12 +31,16 @@ public class Pregunta extends Fichero {
 
     @Override
     public String toString() {
-        return "Pregunta\n" +
-                "modulo='" + modulo +
-                "\ntema='" + tema +
-                "\npregunta='" + pregunta +
-                "\nopciones=" + Arrays.toString(opciones) +
-                "\nrespuesta='" + respuesta+"\n";
+        List<String> opcionesList = Arrays.asList(opciones);
+
+        return  "\n"+"\n"+modulo.toUpperCase() +"\n"+
+                tema.toUpperCase() +"\n"+
+                pregunta.toUpperCase() +"\n"+
+                opcionesList.getFirst()+"\n" +
+                opcionesList.get(1)+"\n" +
+                opcionesList.get(2)+"\n"+
+                opcionesList.get(3)+"\n"+
+                respuesta;
     }
 
     public Pregunta(String respuesta) {
