@@ -16,6 +16,6 @@ public class Escanner {
     public static int pedirNumeros(String mensaje){
         System.out.print(mensaje);
         int lector = new Scanner(System.in).nextInt();
-        return lector
+        return lector;
     }
 }
