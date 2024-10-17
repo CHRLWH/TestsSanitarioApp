@@ -45,7 +45,9 @@ public class MetodosPrograma extends Preguntas {
                             break;
 
                     }
+
                     tiempo++;
+
                 } while (tiempo > 0);
 
             } catch (InputMismatchException a) {
@@ -60,7 +62,7 @@ public class MetodosPrograma extends Preguntas {
     public void preguntaAleatoria() {
 
 
-        int numeroPreguntasAResponder = 0;
+        int numeroPreguntasAResponder;
         int numeroRespuestasCorrectas = 0;
         int numeroRespuestasFalladas = 0;
         int numeroRespuestasEnBlanco = 0;
@@ -113,9 +115,7 @@ public class MetodosPrograma extends Preguntas {
                     System.out.println("Pregunta NO añadida a favoritos!");
                 }
 
-                System.out.println("Respuestas acertadas " + numeroRespuestasCorrectas + "Preguntas");
-                System.out.println("Respuestas falladas: " + numeroRespuestasFalladas);
-                System.out.println("Respuestas en blanco:" + numeroRespuestasEnBlanco + "preguntas");
+                System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
 
                 numeroPreguntasAResponder--;
                 System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
@@ -140,8 +140,6 @@ public class MetodosPrograma extends Preguntas {
     }
 
     public void preguntaPorModulo() {
-        //Hacer un hashSet que almacene las preguntas iguales que quiera el usuario
-
 
         int numeroPreguntasAResponder = 0;
         int numeroRespuestasCorrectas = 0;
@@ -154,8 +152,11 @@ public class MetodosPrograma extends Preguntas {
 
         ArrayList <Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         ArrayList<String> falladas = new ArrayList<String>();
-        Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
+
+        Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
+
+
 
 
         Pregunta preguntaFavorita = new Pregunta();
@@ -204,9 +205,8 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println("Pregunta NO añadida a favoritos!");
             }
 
-            System.out.println("Respuestas acertadas " + numeroRespuestasCorrectas + "Preguntas");
-            System.out.println("Respuestas falladas: " + numeroRespuestasFalladas);
-            System.out.println("Respuestas en blanco:"+numeroRespuestasEnBlanco+"preguntas");
+            System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
+
 
             System.out.println("Te quedan "+numeroPreguntasAResponder+" preguntas");
         } while (numeroPreguntasAResponder > 0);
@@ -272,6 +272,7 @@ public class MetodosPrograma extends Preguntas {
                     System.out.println("Has fallado :(");
                     numeroRespuestasFalladas++;
                 }
+                System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
             }
             marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita?");
 
