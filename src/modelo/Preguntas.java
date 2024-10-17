@@ -26,6 +26,7 @@ public class Preguntas extends Procesar {
             }
     }
 
+
     public ArrayList<Pregunta> getPreguntas() {
         return preguntas;
     }
@@ -36,6 +37,8 @@ public class Preguntas extends Procesar {
             System.out.println(i.toString());
         }
     }
+
+
 
     public ArrayList<Pregunta> getPreguntasFavoritas() {
         return preguntasFavoritas;
