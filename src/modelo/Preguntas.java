@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Preguntas extends Procesar {
 
     ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
-
+    ArrayList <Pregunta> preguntasFavoritas = new ArrayList<Pregunta>();
 
     public Preguntas() {
         this.preguntas = getPreguntasProcesadas();
@@ -37,4 +37,7 @@ public class Preguntas extends Procesar {
         }
     }
 
+    public ArrayList<Pregunta> getPreguntasFavoritas() {
+        return preguntasFavoritas;
+    }
 }
