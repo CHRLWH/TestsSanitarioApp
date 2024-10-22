@@ -73,13 +73,13 @@ public class Fichero {
         return ficheroLeido;
     }
 
-    public void escribirFicheroNuevo(String rutaDeFicheroAescribir, String textoAEscribir) {
+    public void escribirFicheroNuevo(String rutaDeFicheroAescribir, StringBuilder textoAEscribir) {
 
         FileWriter ficheroAescribir = null;
 
         try {
             ficheroAescribir = new FileWriter(rutaDeFicheroAescribir);
-            ficheroAescribir.write(textoAEscribir);
+            ficheroAescribir.write(String.valueOf(textoAEscribir));
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -39,11 +39,12 @@ public class Utilidades extends Preguntas {
 
     public void updateFicheroPreguntas(String rutaficheroAupdatear, ArrayList <Pregunta> datosQueEscribir){
         //BORRAR FICHERO Y UPDATEARLO ESCRIBIENDOLO OTRA VEZ
-        String datosTransFormadosParaEscribir = "";
-
+        StringBuilder datosTransFormadosParaEscribir = new StringBuilder();
+        String preguntaString;
         for (Pregunta i:getPreguntas()){
             Pregunta praux = new Pregunta(i.getModulo(),i.getTema(),i.getPreguntaString(),i.getOpciones(),i.getRespuestaString());
-            datosTransFormadosParaEscribir.concat(praux.toString());
+            preguntaString = praux.toString();
+            datosTransFormadosParaEscribir.append(preguntaString);
        }
 
         File ficheroAescribir = new File(rutaficheroAupdatear);
