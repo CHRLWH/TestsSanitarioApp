@@ -7,7 +7,7 @@ import controlador.Utilidades;
 import java.util.*;
 
 
-public class MetodosPrograma extends Preguntas {
+public class MetodosPrograma extends Utilidades {
 
 
     public void ejecutarPrograma() {
@@ -24,10 +24,8 @@ public class MetodosPrograma extends Preguntas {
 
             try {
                 System.out.println("Bienvenido al programa de test sanitarios!");
-                tiempo =
-                menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta\n5.-Ver favoritas");
-
                 do {
+                    menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta\n5.-Ver favoritas");
 
                     switch (menu) {
                         case 1:
@@ -44,6 +42,9 @@ public class MetodosPrograma extends Preguntas {
                             break;
                         case 5:
                             preguntasFavoritas();
+                            break;
+                        case 6:
+                            borrarPregunta();
                             break;
                     }
 
@@ -336,4 +337,9 @@ public class MetodosPrograma extends Preguntas {
         escribirFicheroExistente("data/preguntas.txt",praux.toString());
 
     }
+
+    public void borrarPregunta(){
+        updateFicheroPreguntas("data/preguntas.txt",getPreguntasFavoritas());
+    }
+
 }
