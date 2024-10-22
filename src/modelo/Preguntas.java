@@ -12,6 +12,7 @@ public class Preguntas extends Procesar {
 
     public Preguntas() {
         this.preguntas = getPreguntasProcesadas();
+        this.preguntasFavoritas = getPreguntasFavoritasProcesadas();
     }
 
     public void mostrarListas() {

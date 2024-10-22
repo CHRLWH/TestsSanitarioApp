@@ -11,7 +11,7 @@ public class Fichero {
 
     }
 
-    public ArrayList <String> leerFichero(){
+    public ArrayList <String> leerFichero(String ficheroALeer){
 
             String cadena="";
             int longitudDeLaCadena = 0;
@@ -23,7 +23,7 @@ public class Fichero {
 
             try {
                 //Creo el objeto FileReader con la ruta relativa del txt a leer
-                fichero = new FileReader("data/preguntas.txt");
+                fichero = new FileReader(ficheroALeer);
                 lector = new BufferedReader(fichero);
                 do {
                     cadena = lector.readLine();
@@ -97,7 +97,7 @@ public class Fichero {
 
     }
 
-    public void escribirFicheroExistente(String rutaDeFicheroAescribir, String textoAEscribir){
+    public static void escribirFicheroExistente(String rutaDeFicheroAescribir, String textoAEscribir){
 
         FileWriter ficheroAescribir = null;
 

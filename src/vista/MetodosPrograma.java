@@ -2,6 +2,7 @@ package vista;
 
 import modelo.Pregunta;
 import modelo.Preguntas;
+import controlador.Utilidades;
 
 import java.util.*;
 
@@ -15,6 +16,7 @@ public class MetodosPrograma extends Preguntas {
 
         int menu = 0;
         int tiempo = 0;
+
         boolean explosionDePrograma = false;
 
         do {
@@ -22,8 +24,8 @@ public class MetodosPrograma extends Preguntas {
 
             try {
                 System.out.println("Bienvenido al programa de test sanitarios!");
-                tiempo = Escanner.pedirNumeros("De cuanto tiempo quieres el test?¿");
-                menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta");
+                tiempo =
+                menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta\n5.-Ver favoritas");
 
                 do {
 
@@ -43,7 +45,6 @@ public class MetodosPrograma extends Preguntas {
                         case 5:
                             preguntasFavoritas();
                             break;
-
                     }
 
                     tiempo++;
@@ -70,7 +71,6 @@ public class MetodosPrograma extends Preguntas {
         String respuesta = "";
         String marcarComoFavorita;
 
-        String[] opciones = new String[]{};
         ArrayList<Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         ArrayList <String> falladas = new ArrayList<String>();
         Pregunta preguntaFavorita = new Pregunta();
@@ -94,8 +94,8 @@ public class MetodosPrograma extends Preguntas {
                 List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
                 //Cambio el orden de las opciones en la lista
                 Collections.shuffle(opcionesList);
-                //Vuelvo a convertir la List en array
-                opcionesList.toArray(opciones);
+
+                opcionesList.stream().forEach(System.out::println);
 
                 respuesta = Escanner.pedirStringConMensaje("Introduce tu respuesta!");
 
@@ -110,21 +110,11 @@ public class MetodosPrograma extends Preguntas {
                     System.out.println("Respuesta fallada!\n");
                     numeroRespuestasFalladas++;
                 }
+                System.out.println();
 
-                marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita?");
+                marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita? f/n");
 
-                if (marcarComoFavorita.equalsIgnoreCase("f")) {
-                    preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
-                            listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
-
-                    escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
-
-                    preguntasFavoritas.add(preguntaFavorita);
-                    System.out.println("Has marcado esta pregunta como favorita");
-
-                } else {
-                    System.out.println("Pregunta NO añadida a favoritos!");
-                }
+                Utilidades.verificarFavorita(marcarComoFavorita,preguntasFavoritas,listaPreguntas);
 
                 System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
 
@@ -132,9 +122,6 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println("Te quedan " + numeroPreguntasAResponder + " Preguntas");
 
             } while (numeroPreguntasAResponder > 0);
-
-            System.out.println("Has acertado " + numeroRespuestasCorrectas + "Preguntas");
-            System.out.println("Has fallado estas preguntas " + numeroRespuestasFalladas);
 
             for (String i : falladas) {
                 System.out.println(i);
@@ -161,7 +148,6 @@ public class MetodosPrograma extends Preguntas {
         String moduloAbuscar;
         String marcarComoFavorita;
 
-        String[] opciones = new String[]{};
         ArrayList <Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         ArrayList<String> falladas = new ArrayList<String>();
         ArrayList<Pregunta> listaPreguntas = getPreguntas();
@@ -178,8 +164,6 @@ public class MetodosPrograma extends Preguntas {
             List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
             //Cambio el orden de las opciones en la lista
             Collections.shuffle(opcionesList);
-            //Vuelvo a convertir la List en array
-            opcionesList.toArray(opciones);
 
             System.out.println("Preguntas por modulo. Para marcar como favorita pulse f tras una pregunta");
             numeroPreguntasAResponder = getPreguntas().size();
@@ -198,7 +182,7 @@ public class MetodosPrograma extends Preguntas {
                 System.out.println(i.getModulo());
                 System.out.println(i.getTema());
                 System.out.println(i.getPreguntaString());
-                System.out.println(Arrays.toString(i.getOpciones()));
+                opcionesList.stream().forEach(System.out::println);
                 respuesta = Escanner.pedirStringSinMensaje();
 
                 if (respuesta.equals(i.getRespuestaString())) {
@@ -213,17 +197,10 @@ public class MetodosPrograma extends Preguntas {
                 }
 
             }
-            marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita?");
+            marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita? f/n");
 
-            if (marcarComoFavorita.equalsIgnoreCase("f")){
-                preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
-                        listaPreguntas.getFirst().getTema(),listaPreguntas.getFirst().getOpciones(),listaPreguntas.getFirst().getRespuestaString());
-                escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
-                preguntasFavoritas.add(preguntaFavorita);
-                System.out.println("Has marcado esta pregunta como favorita");
-            }else{
-                System.out.println("Pregunta NO añadida a favoritos!");
-            }
+            Utilidades.verificarFavorita(marcarComoFavorita,preguntasFavoritas,listaPreguntas);
+
 
             System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
 
@@ -245,7 +222,7 @@ public class MetodosPrograma extends Preguntas {
 
     public void preguntaPorTemas() {
 
-        Scanner teclado = new Scanner(System.in);
+
 
         int numeroRespuestasCorrectas = 0;
         int numeroRespuestasFalladas = 0;
@@ -255,7 +232,6 @@ public class MetodosPrograma extends Preguntas {
 
         String respuesta;
 
-        String[] opciones = new String[]{};
         ArrayList <Pregunta> preguntasFavoritas = getPreguntasFavoritas();
         Set<Pregunta> preguntasIguales = new HashSet<Pregunta>();
         String temaAbuscar;
@@ -269,12 +245,9 @@ public class MetodosPrograma extends Preguntas {
             List<String> opcionesList = Arrays.asList(listaPreguntas.getFirst().getOpciones());
             //Cambio el orden de las opciones en la lista
             Collections.shuffle(opcionesList);
-            //Vuelvo a convertir la List en array
-            opcionesList.toArray(opciones);
 
             System.out.println("Preguntas por tema. Para marcar como favorita pulse f tras una pregunta");
-            System.out.println("Introduce el tema sobre el que quieres hacer el test:");
-            temaAbuscar = teclado.nextLine();
+            temaAbuscar = Escanner.pedirStringConMensaje("Introduce el tema sobre el que quieres hacer el test:");
             System.out.println("Has escogido " + temaAbuscar + "!");
 
             for (Pregunta i : listaPreguntas) {
@@ -287,7 +260,7 @@ public class MetodosPrograma extends Preguntas {
             for (Pregunta i : preguntasIguales) {
                 System.out.println(i.getTema());
                 System.out.println(i.getPreguntaString());
-                System.out.println(Arrays.toString(i.getOpciones()));
+                opcionesList.stream().forEach(System.out::println);
                 respuesta = new Scanner(System.in).nextLine();
 
                 if (respuesta.equals(i.getRespuestaString())) {
@@ -302,24 +275,14 @@ public class MetodosPrograma extends Preguntas {
                 }
                 System.out.println("Llevas "+numeroRespuestasCorrectas+" preguntas acertadas, "+numeroRespuestasFalladas+" preguntas falladas "+numeroRespuestasEnBlanco+" preguntas en blanco");
             }
-            marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita?");
+            marcarComoFavorita = Escanner.pedirStringConMensaje("Añadir a favorita? f/n");
 
-            if (marcarComoFavorita.equalsIgnoreCase("f")) {
-                preguntaFavorita = new Pregunta(listaPreguntas.getFirst().getModulo(), listaPreguntas.getFirst().getPreguntaString(),
-                        listaPreguntas.getFirst().getTema(), listaPreguntas.getFirst().getOpciones(), listaPreguntas.getFirst().getRespuestaString());
+        Utilidades.verificarFavorita(marcarComoFavorita,preguntasFavoritas,listaPreguntas);
 
-                escribirFicheroExistente("data/preguntasFavoritas.txt",preguntaFavorita.toString());
 
-                preguntasFavoritas.add(preguntaFavorita);
-                System.out.println("Has marcado esta pregunta como favorita");
-            } else {
-                System.out.println("Pregunta NO añadida a favoritos!");
-            }
-
-            System.out.println("Has Acertado = " + numeroRespuestasCorrectas + " Preguntas");
+        System.out.println("Has Acertado = " + numeroRespuestasCorrectas + " Preguntas");
             System.out.println("Has fallado = " + numeroRespuestasFalladas + " Preguntas");
             System.out.println("Has dejado en blanco = " + numeroRespuestasEnBlanco + " Preguntas");
-            teclado.close();
 
 
     }
@@ -328,12 +291,7 @@ public class MetodosPrograma extends Preguntas {
 
         ArrayList <Pregunta> preguntasFavsAuxiliar = getPreguntasFavoritas();
 
-        for(Pregunta i:preguntasFavsAuxiliar){
-            System.out.println(i.getModulo());
-            System.out.println(i.getTema());
-            System.out.println(i.getPreguntaString());
-            System.out.println(Arrays.toString(i.getOpciones()));
-        }
+        preguntasFavsAuxiliar.stream().forEach(System.out::println);
 
     }
 
