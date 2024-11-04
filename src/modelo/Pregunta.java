@@ -33,14 +33,14 @@ public class Pregunta extends Fichero {
     public String toString() {
         List<String> opcionesList = Arrays.asList(opciones);
 
-        return  "\n"+"\n"+modulo.toUpperCase() +"\n"+
+        return  modulo.toUpperCase() +"\n"+
                 tema.toUpperCase() +"\n"+
                 pregunta.toUpperCase() +"\n"+
                 opcionesList.getFirst()+"\n" +
                 opcionesList.get(1)+"\n" +
                 opcionesList.get(2)+"\n"+
                 opcionesList.get(3)+"\n"+
-                respuesta;
+                respuesta+"\n\n";
     }
 
     public Pregunta(String respuesta) {

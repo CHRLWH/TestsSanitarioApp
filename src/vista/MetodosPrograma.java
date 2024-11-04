@@ -1,7 +1,6 @@
 package vista;
 
 import modelo.Pregunta;
-import modelo.Preguntas;
 import controlador.Utilidades;
 
 import java.util.*;
@@ -24,9 +23,8 @@ public class MetodosPrograma extends Utilidades {
 
             try {
                 System.out.println("Bienvenido al programa de test sanitarios!");
+                menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta\n5.-Ver favoritas");
                 do {
-                    menu = Escanner.pedirNumeros("1.-Preguntas por Aleatoria\n2.-Preguntas por modulo\n3.-PreguntaPorTemas\n4.-Crear pregunta\n5.-Ver favoritas");
-
                     switch (menu) {
                         case 1:
                             preguntaAleatoria();
@@ -42,9 +40,6 @@ public class MetodosPrograma extends Utilidades {
                             break;
                         case 5:
                             preguntasFavoritas();
-                            break;
-                        case 6:
-                            borrarPregunta();
                             break;
                     }
 
@@ -62,7 +57,6 @@ public class MetodosPrograma extends Utilidades {
     }
 
     public void preguntaAleatoria() {
-
 
         int numeroPreguntasAResponder;
         int numeroRespuestasCorrectas = 0;
@@ -129,7 +123,6 @@ public class MetodosPrograma extends Utilidades {
             }
 
             System.out.println("Has dejado en blanco " + numeroRespuestasEnBlanco + "preguntas");
-
 
         }catch (InputMismatchException e) {
             System.out.println("Introduce un numero!");
@@ -338,8 +331,5 @@ public class MetodosPrograma extends Utilidades {
 
     }
 
-    public void borrarPregunta(){
-        updateFicheroPreguntas("data/preguntas.txt",getPreguntasFavoritas());
-    }
 
 }
